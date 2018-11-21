@@ -47,9 +47,11 @@ public class Tracking2 extends AppCompatActivity {
             tV.setTextColor(Color.parseColor("#FFFFFF"));
         }
 
-        Boolean done = alerts.AlertDeliver(this);
+        alerts.AlertDeliver(this);
+        Boolean done = alerts.getDone();
+
         if (done == true){
-            Integer id = LL.getChildAt(LL.getChildCount()-1).getId();
+            Integer id = LL.getChildAt(0).getId();
             TextView tV = findViewById(id);
             tV.setBackgroundColor(Color.parseColor("#420420"));
             tV.setTextColor(Color.parseColor("#FFFFFF"));

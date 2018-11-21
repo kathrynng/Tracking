@@ -5,8 +5,10 @@ import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 
 public class Alerts {
-    Boolean done;
-    public boolean AlertDeliver(Context context){
+
+    private Boolean done;
+
+    public void AlertDeliver(Context context){
         done = false;
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setCancelable(true);
@@ -16,20 +18,24 @@ public class Alerts {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
                         done = true;
+                        dialog.dismiss();
                     }
                 });
-        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
                 done = false;
+                dialog.cancel();
             }
         });
 
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+
+    public Boolean getDone() {
         return done;
     }
 
